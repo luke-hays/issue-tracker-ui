@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+#HeaderContainer {
+  background-color: #313234;
+  color: #d9d2c1;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+#MainContainer {
+  background-color: #363f52;
+  color:#d9d2c1;
+  margin-top: 50px;
+  height: calc(100vh - 50px);
+  width: 100%;
+  overflow: auto;
+}
