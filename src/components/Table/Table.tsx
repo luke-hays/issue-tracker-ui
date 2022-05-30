@@ -20,6 +20,7 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
 
   return (
     <div>
+      {count === 0 ? <div>No Data to Display</div> : ''}
       <table>
         <thead>
           <tr>

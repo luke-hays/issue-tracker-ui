@@ -9,7 +9,9 @@ const Home = (): JSX.Element => {
     <div>
       <div className="flex flex-col items-center justify-center mt-4">
         <h1 className="text-7xl">Issue Tracker</h1>
-        <Table rows={rows} columns={columns} />
+        <div className="mt-8">
+          <Table rows={rows} columns={columns} />
+        </div>
       </div>
     </div>
   );

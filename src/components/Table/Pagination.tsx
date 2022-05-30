@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 interface paginationProps {
   activePage: number;
   count: number;
@@ -13,6 +15,12 @@ const Pagination = ({
   totalPages,
   setActivePage,
 }: paginationProps): JSX.Element => {
+  const [hasData, setHasData] = useState(false);
+
+  useEffect(() => {
+    setHasData(count > 0);
+  }, [count]);
+
   const beginning = activePage === 1 ? 1 : rowsPerPage * (activePage - 1) + 1;
   const end = activePage === totalPages ? count : beginning + rowsPerPage - 1;
 
@@ -50,28 +58,32 @@ const Pagination = ({
           Previous
         </button>
         <button
-          disabled={activePage === totalPages}
+          disabled={activePage === totalPages || totalPages <= 1}
           onClick={onNextClick}
           type="button"
         >
           Next
         </button>
         <button
-          disabled={activePage === totalPages}
+          disabled={activePage === totalPages || totalPages <= 1}
           onClick={onLastClick}
           type="button"
         >
           Last
         </button>
       </div>
-      <div>
-        <p>
-          {activePage} of {totalPages}
-        </p>
-        <p>
-          Rows: {beginning === end ? end : `${beginning} - ${end}`} of {count}
-        </p>
-      </div>
+      {hasData ? (
+        <div>
+          <p>
+            {activePage} of {totalPages}
+          </p>
+          <p>
+            Rows: {beginning === end ? end : `${beginning} - ${end}`} of {count}
+          </p>
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };
