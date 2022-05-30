@@ -21,7 +21,7 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
   return (
     <div>
       {count === 0 ? <div>No Data to Display</div> : ''}
-      <table>
+      <table className="border-solid border w-fit">
         <thead>
           <tr>
             {columns.map((column) => {
@@ -36,7 +36,10 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
               };
 
               return (
-                <th key={column.accessor}>
+                <th
+                  key={column.accessor}
+                  className="border-solid border border-orange-100"
+                >
                   <span>{column.label}</span>
                   <button
                     type="button"
@@ -51,7 +54,7 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
           <tr>
             {columns.map((column) => {
               return (
-                <th>
+                <th className="border-solid border border-orange-100">
                   <input
                     key={`${column.accessor}-search`}
                     type="search"
@@ -69,11 +72,17 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
         <tbody>
           {calculatedRows.map((row: rowType) => {
             return (
-              <tr key={row.id}>
+              <tr
+                key={row.id}
+                className="border-solid border border-orange-100"
+              >
                 {columns.map((column) => {
                   if (column.format) {
                     return (
-                      <td key={column.accessor}>
+                      <td
+                        key={column.accessor}
+                        className="border-solid border border-orange-100"
+                      >
                         {column.format(
                           Boolean(row[column.accessor as keyof rowType])
                         )}
@@ -81,7 +90,10 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
                     );
                   }
                   return (
-                    <td key={column.accessor}>
+                    <td
+                      key={column.accessor}
+                      className="border-solid border border-orange-100"
+                    >
                       {row[column.accessor as keyof rowType]}
                     </td>
                   );

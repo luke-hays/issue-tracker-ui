@@ -42,7 +42,7 @@ const Pagination = ({
 
   return (
     <div>
-      <div>
+      <div className="flex justify-around">
         <button
           disabled={activePage === 1}
           onClick={onFirstClick}
@@ -57,6 +57,9 @@ const Pagination = ({
         >
           Previous
         </button>
+        <p>
+          {activePage} of {totalPages}
+        </p>
         <button
           disabled={activePage === totalPages || totalPages <= 1}
           onClick={onNextClick}
@@ -73,10 +76,7 @@ const Pagination = ({
         </button>
       </div>
       {hasData ? (
-        <div>
-          <p>
-            {activePage} of {totalPages}
-          </p>
+        <div className="flex justify-end">
           <p>
             Rows: {beginning === end ? end : `${beginning} - ${end}`} of {count}
           </p>
