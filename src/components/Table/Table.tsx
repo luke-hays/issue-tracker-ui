@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { TableProps, rowType } from './interfaces/table.interface';
 import useTable from './hooks/useTable';
 import Pagination from './Pagination';

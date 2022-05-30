@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useMemo } from 'react';
 import { rowType } from '../interfaces/table.interface';
 
@@ -68,7 +69,7 @@ const paginateRows = (
 
 const useTable = (rows: rowType[]): any => {
   const [activePage, setActivePage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(3);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState({ order: 'asc', orderBy: 'id' });
 
