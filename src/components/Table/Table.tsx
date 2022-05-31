@@ -1,4 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faSortUp,
+  faSort,
+  faSortDown,
+} from '@fortawesome/free-solid-svg-icons';
+
 import { TableProps, rowType } from './interfaces/table.interface';
 import useTable from './hooks/useTable';
 import Pagination from './Pagination';
@@ -25,14 +32,14 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
         <thead>
           <tr>
             {columns.map((column) => {
-              const sortIcon = (): string => {
+              const sortIcon = (): JSX.Element => {
                 if (column.accessor === sort.orderBy) {
                   if (sort.order === 'asc') {
-                    return '⬆️';
+                    return <FontAwesomeIcon icon={faSortUp} />;
                   }
-                  return '⬇️';
+                  return <FontAwesomeIcon icon={faSortDown} />;
                 }
-                return '️↕️';
+                return <FontAwesomeIcon icon={faSort} />;
               };
 
               return (
