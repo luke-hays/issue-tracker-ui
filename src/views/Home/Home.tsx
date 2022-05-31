@@ -4,70 +4,29 @@ import '../../index.css';
 const rows = [
   {
     id: 1,
-    name: 'Liz Lemon',
-    age: 36,
-    is_manager: true,
-    start_date: '02-28-1999',
-  },
-  {
-    id: 2,
-    name: 'Jack Donaghy',
-    age: 40,
-    is_manager: true,
-    start_date: '03-05-1997',
-  },
-  {
-    id: 3,
-    name: 'Tracy Morgan',
-    age: 39,
-    is_manager: false,
-    start_date: '07-12-2002',
-  },
-  {
-    id: 4,
-    name: 'Jenna Maroney',
-    age: 40,
-    is_manager: false,
-    start_date: '02-28-1999',
-  },
-  {
-    id: 5,
-    name: 'Kenneth Parcell',
-    age: Infinity,
-    is_manager: false,
-    start_date: '01-01-1970',
-  },
-  {
-    id: 6,
-    name: 'Pete Hornberger',
-    age: null,
-    is_manager: true,
-    start_date: '04-01-2000',
-  },
-  {
-    id: 7,
-    name: 'Frank Rossitano',
-    age: 36,
-    is_manager: false,
-    start_date: null,
+    status: 'New',
+    owner: 'Ravan',
+    created: '2022-30-05 21:25:35',
+    effort: 5,
+    duedate: '2022-10-06 21:25:35',
+    title: 'Missing bottom border on panel.',
   },
 ];
 
 const columns = [
-  { accessor: 'name', label: 'Name' },
-  { accessor: 'age', label: 'Age' },
-  {
-    accessor: 'is_manager',
-    label: 'Manager',
-    format: (value: boolean) => (value ? '✔️' : '✖️'),
-  },
-  { accessor: 'start_date', label: 'Start Date' },
+  { accessor: 'id', label: 'ID' },
+  { accessor: 'status', label: 'Status' },
+  { accessor: 'owner', label: 'Owner' },
+  { accessor: 'created', label: 'Created' },
+  { accessor: 'effort', label: 'Effort' },
+  { accessor: 'duedate', label: 'Due Date' },
+  { accessor: 'title', label: 'Title' },
 ];
 
 const Home = (): JSX.Element => {
   return (
-    <div>
-      <div className="flex flex-col items-center justify-center mt-4">
+    <div className="w-fit mx-4">
+      <div className="flex flex-col items-center justify-center mt-4 flex-wrap">
         <h1 className="text-7xl">Issue Tracker</h1>
         <div className="mt-8">
           <Table rows={rows} columns={columns} />

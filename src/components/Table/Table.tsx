@@ -28,24 +28,24 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
   return (
     <div>
       {count === 0 ? <div>No Data to Display</div> : ''}
-      <table className="border-solid border w-fit">
+      <table className="table-auto border-collapse border-solid border border-orange-100 rounded-tl-lg">
         <thead>
           <tr>
             {columns.map((column) => {
               const sortIcon = (): JSX.Element => {
                 if (column.accessor === sort.orderBy) {
                   if (sort.order === 'asc') {
-                    return <FontAwesomeIcon icon={faSortUp} />;
+                    return <FontAwesomeIcon className="pl-2" icon={faSortUp} />;
                   }
-                  return <FontAwesomeIcon icon={faSortDown} />;
+                  return <FontAwesomeIcon className="pl-2" icon={faSortDown} />;
                 }
-                return <FontAwesomeIcon icon={faSort} />;
+                return <FontAwesomeIcon className="pl-2" icon={faSort} />;
               };
 
               return (
                 <th
                   key={column.accessor}
-                  className="border-solid border border-orange-100"
+                  className="border-solid border border-orange-100 border-collapse"
                 >
                   <span>{column.label}</span>
                   <button
@@ -61,9 +61,10 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
           <tr>
             {columns.map((column) => {
               return (
-                <th className="border-solid border border-orange-100">
+                <th className="border-solid border border-orange-100 border-collapse">
                   <input
                     key={`${column.accessor}-search`}
+                    className="w-[10vw] min-w-[-webkit-fill-available] p-1 m-1 rounded-sm bg-zinc-100"
                     type="search"
                     placeholder={`Search ${column.label}`}
                     value={filters[column.accessor as keyof typeof filters]}
@@ -81,14 +82,14 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
             return (
               <tr
                 key={row.id}
-                className="border-solid border border-orange-100"
+                className="border-solid border border-orange-100 border-collapse"
               >
                 {columns.map((column) => {
                   if (column.format) {
                     return (
                       <td
                         key={column.accessor}
-                        className="border-solid border border-orange-100"
+                        className="border-solid border border-orange-100 px-2 border-collapse"
                       >
                         {column.format(
                           Boolean(row[column.accessor as keyof rowType])
@@ -99,7 +100,7 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
                   return (
                     <td
                       key={column.accessor}
-                      className="border-solid border border-orange-100"
+                      className="border-solid border border-orange-100 px-2 border-collapse"
                     >
                       {row[column.accessor as keyof rowType]}
                     </td>
