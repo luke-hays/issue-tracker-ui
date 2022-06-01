@@ -61,7 +61,10 @@ const Table = ({ rows, columns }: TableProps): JSX.Element => {
           <tr>
             {columns.map((column) => {
               return (
-                <th className="border-solid border border-orange-100 border-collapse">
+                <th
+                  className="border-solid border border-orange-100 border-collapse"
+                  key={`${column.accessor}-th`}
+                >
                   <input
                     key={`${column.accessor}-search`}
                     className="w-[10vw] min-w-[-webkit-fill-available] p-1 m-1 rounded-sm bg-zinc-100"
