@@ -13,6 +13,16 @@ const columns = [
   { accessor: 'title', label: 'Title' },
 ];
 
+const modifyDates: any = (data: any) => {
+  return data.map((e: any) => {
+    const newCreated = new Date(e.created).toString();
+    const newDue = new Date(e.due).toString() ?? undefined;
+
+    return { ...e, created: newCreated, due: newDue };
+  });
+  return data;
+};
+
 const Home = (): JSX.Element => {
   const { loading, error, data } = useIssueList();
 
@@ -27,7 +37,7 @@ const Home = (): JSX.Element => {
       <div className="flex flex-col items-center justify-center mt-4 flex-wrap">
         <h1 className="text-7xl">Issue Tracker</h1>
         <div className="mt-8">
-          <Table rows={data.issueList} columns={columns} />
+          <Table rows={modifyDates(data.issueList)} columns={columns} />
         </div>
       </div>
     </div>
