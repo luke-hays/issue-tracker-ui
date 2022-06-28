@@ -2,6 +2,7 @@ import useIssueList from 'hooks/useIssueList';
 
 import Table from 'components/Table/Table';
 import '../../index.css';
+import IssueAddForm from './IssueAddForm';
 
 const columns = [
   { accessor: 'id', label: 'ID' },
@@ -39,6 +40,7 @@ const Home = (): JSX.Element => {
         <div className="mt-8">
           <Table rows={modifyDates(data.issueList)} columns={columns} />
         </div>
+        <IssueAddForm />
       </div>
     </div>
   );
